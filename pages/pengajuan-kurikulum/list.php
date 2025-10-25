@@ -39,9 +39,10 @@
                                                     <label for="name">Jenjang</label>
                                                     <select class="form-control" name="jenjang" id="level" <?= is_superadmin() ? 'required' : '' ?>>
                                                         <option value="" disabled selected hidden>-- pilih salah satu --</option>
-                                                        <option value="SD">SD</option>
-                                                        <option value="SMP">SMP</option>
-                                                        <option value="SMA">SMA</option>
+                                                        <option value="tk">TK</option>
+                                                        <option value="sd">SD</option>
+                                                        <option value="smp">SMP</option>
+                                                        <option value="sma">SMA</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

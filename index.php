@@ -100,11 +100,12 @@
 
 <body class="c-app">
   <?php 
-    include "script.php";
 
     if (get_user_login('type') == 'superadmin' || get_user_login('type') == 'admin') {
       include "sidebar.php";
     }
+    
+    include "script.php";
   ?>
   <div class="c-wrapper c-fixed-components">
     <?php 
@@ -112,7 +113,7 @@
     ?>
     <div class="c-body">
       <?php 
-        include "routing.php"
+        include "routing.php";
       ?>
       <div class="toast-container position-fixed p-3" style="right: 1rem; top: 1rem; z-index: 9999;">
         <div id="mainToast" class="toast" data-delay="3000">

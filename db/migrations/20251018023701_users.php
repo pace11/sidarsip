@@ -23,7 +23,7 @@ final class Users extends AbstractMigration
         $table->addColumn('name', 'text', ['null' => true])
               ->addColumn('email', 'text', ['null' => true])
               ->addColumn('password', 'text', ['null' => true])
-              ->addColumn('type', 'enum', ['values' => ['superadmin', 'admin', 'sd', 'smp', 'sma'], 'default' => 'admin'])
+              ->addColumn('type', 'enum', ['values' => ['superadmin', 'admin', 'tk', 'sd', 'smp', 'sma'], 'default' => 'admin'])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('deleted_at', 'timestamp', ['null' => true, 'default' => null])

@@ -21,7 +21,7 @@ final class Institutions extends AbstractMigration
     {
         $table = $this->table('institutions');
         $table->addColumn('name', 'text', ['null' => true])
-              ->addColumn('level', 'enum', ['values' => ['sd', 'smp', 'sma'], 'default' => 'sd'])
+              ->addColumn('level', 'enum', ['values' => ['tk', 'sd', 'smp', 'sma'], 'default' => 'tk'])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('deleted_at', 'timestamp', ['null' => true, 'default' => null])
