@@ -101,7 +101,10 @@
 <body class="c-app">
   <?php 
     include "script.php";
-    include "sidebar.php";
+
+    if (get_user_login('type') == 'superadmin' || get_user_login('type') == 'admin') {
+      include "sidebar.php";
+    }
   ?>
   <div class="c-wrapper c-fixed-components">
     <?php 
