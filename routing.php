@@ -17,7 +17,7 @@ switch(get_user_login('type')) {
         if (isset($_GET['page'])) $page=$_GET['page'];
         else $page="beranda";
 
-        if ($page == "beranda")                     include("pages/beranda.php");
+        if ($page == "beranda")                     include("pages/guest/beranda.php");
         elseif ($page == "logout")                  include("pages/logout.php");
 
         //------------------------------------ Pendidikan Madrasah ------------------------------------

@@ -13,5 +13,12 @@
                 </div>
             </a>
         </li>
+        <li>
+            <a class="c-header-nav-link" href="?page=logout" title="Logout">
+                <svg class="c-icon c-icon-lg">
+                    <use xlink:href="./coreui/icons/sprites/free.svg#cil-account-logout"></use>
+                </svg>
+            </a>
+        </li>
     </ul>
 </header>

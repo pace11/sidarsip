@@ -115,7 +115,7 @@
       <?php 
         include "routing.php";
       ?>
-      <div class="toast-container position-fixed p-3" style="right: 1rem; top: 1rem; z-index: 9999;">
+      <div class="toast-container position-fixed p-3" style="right: 1rem; bottom: 1rem; z-index: 9999;">
         <div id="mainToast" class="toast" data-delay="3000">
           <div class="toast-header">
             <strong class="mr-auto" id="toastTitle">Notifikasi</strong>
