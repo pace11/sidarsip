@@ -35,6 +35,10 @@ function is_superadmin() {
     return !!$find;
 }
 
+function is_admin() {
+    return get_user_login('type') == 'admin';
+}
+
 function label_status($value) {
     $status = [
         'in_review'   => '<span class="badge badge-warning">IN REVIEW</span>',
@@ -83,4 +87,23 @@ function get_user_login($param) {
 
 function date_time($param) {
     return date_ind(date('Y-m-d', strtotime($param)));
+}
+
+function generate_file_name($name, $file_extension, $prefix = 'file') {
+    $clean_name = '';
+    
+    if (!empty($name)) {
+        $clean_name = preg_replace('/[^a-zA-Z0-9\s\-_]/', '', $name);
+        $clean_name = str_replace([' ', '-'], '_', $clean_name);
+        $clean_name = strtolower($clean_name);
+        $clean_name = trim($clean_name, '_');
+    }
+    
+    $epoch_time = time();
+    
+    if (!empty($clean_name)) {
+        return $clean_name . '_' . $epoch_time . '.' . $file_extension;
+    } else {
+        return $prefix . '_' . $epoch_time . '.' . $file_extension;
+    }
 }

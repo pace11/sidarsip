@@ -8,13 +8,28 @@
       <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="?page=beranda">
           <svg class="c-sidebar-nav-icon">
             <use xlink:href="./coreui/icons/sprites/free.svg#cil-speedometer"></use>
-          </svg> Beranda</a>
+          </svg>Beranda</a>
       </li>
       <li class="c-sidebar-nav-title">Menu</li>
+      <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="?page=files-upload">
+          <svg class="c-sidebar-nav-icon">
+            <use xlink:href="./coreui/icons/sprites/free.svg#cil-cloud-upload"></use>
+          </svg>Files Upload</a>
+      </li>
       <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="?page=pengajuan-kurikulum">
           <svg class="c-sidebar-nav-icon">
+            <use xlink:href="./coreui/icons/sprites/free.svg#cil-notes"></use>
+          </svg>Pengajuan Kurikulum</a>
+      </li>
+      <li class="c-sidebar-nav-item" style="<?= is_superadmin() ? '' : 'display:none;' ?>"><a class="c-sidebar-nav-link" href="?page=institusi">
+          <svg class="c-sidebar-nav-icon">
             <use xlink:href="./coreui/icons/sprites/free.svg#cil-school"></use>
-          </svg> <?= is_superadmin() ? 'Pendidikan Madrasah' : 'Pengajuan Kurikulum' ?></a>
+          </svg>Institusi</a>
+      </li>
+      <li class="c-sidebar-nav-item" style="<?= is_superadmin() ? '' : 'display:none;' ?>"><a class="c-sidebar-nav-link" href="?page=users">
+          <svg class="c-sidebar-nav-icon">
+            <use xlink:href="./coreui/icons/sprites/free.svg#cil-user"></use>
+          </svg>Users</a>
       </li>
     </ul>
     <div class="c-sidebar-bottom">

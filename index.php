@@ -95,6 +95,10 @@
       background-color: rgba(255,255,255,0.1);
       border-radius: 0.25rem;
     }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -115,11 +119,11 @@
       <?php 
         include "routing.php";
       ?>
-      <div class="toast-container position-fixed p-3" style="right: 1rem; bottom: 1rem; z-index: 9999;">
-        <div id="mainToast" class="toast" data-delay="3000">
+      <div class="toast-container position-fixed p-3" style="right: 1rem; top: 1rem; z-index: 9999; pointer-events: none;">
+        <div id="mainToast" class="toast" data-delay="3000" style="pointer-events: auto;">
           <div class="toast-header">
-            <strong class="mr-auto" id="toastTitle">Notifikasi</strong>
-            <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast">&times;</button>
+        <strong class="mr-auto" id="toastTitle">Notifikasi</strong>
+        <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast">&times;</button>
           </div>
           <div class="toast-body" id="toastBody">Pesan akan muncul di sini.</div>
         </div>

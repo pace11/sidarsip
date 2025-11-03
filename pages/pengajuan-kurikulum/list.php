@@ -13,7 +13,7 @@
                         <div class="card-header">List</div>
                         <div class="card-body">
                             <div class="row mb-3">
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="<?= !is_admin() ? '' : 'display:none;' ?>">
                                     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal">
                                         <i class="fa fa-plus-circle"></i> Upload
                                     </a>
@@ -35,7 +35,7 @@
                                                     <label for="name">File</label>
                                                     <input class="form-control" type="file" name="file_upload" accept=".pdf" required>
                                                 </div>
-                                                <div class="form-group" style="<?= is_superadmin() ? '' : 'display:none;' ?>">
+                                                <div class="form-group" style="<?= is_superadmin() || is_admin() ? '' : 'display:none;' ?>">
                                                     <label for="name">Jenjang</label>
                                                     <select class="form-control" name="jenjang" id="level" <?= is_superadmin() ? 'required' : '' ?>>
                                                         <option value="" disabled selected hidden>-- pilih salah satu --</option>
@@ -82,6 +82,7 @@
                                         $user_type = get_user_login('type');
                                         switch ($user_type) {
                                             case 'superadmin':
+                                            case 'admin':
                                                 $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE cs.deleted_at IS NULL ORDER BY cs.updated_at DESC";
                                                 break;
                                             default:
