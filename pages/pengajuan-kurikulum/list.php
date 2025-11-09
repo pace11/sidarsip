@@ -107,7 +107,12 @@
                                                             data-remark="<?= $data['remark'] ?>" style="<?= is_superadmin() && $data['status'] == 'in_review' ? '' : 'display:none;' ?>">
                                                             <i class="fa fa-pencil"></i> Edit Status
                                                         </a>
-                                                        <a href="?page=productdelete&id=<?= $data['id'] ?>" class="btn btn-danger btn-sm" style="<?= is_superadmin() ? '' : 'display:none;' ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                                        <a href="#" 
+                                                            class="btn btn-danger btn-sm btn-delete"
+                                                            data-id="<?= $data['id'] ?>"
+                                                            style="<?= is_superadmin() ? '' : 'display:none;' ?>">
+                                                            <i class="fa fa-trash"></i> Hapus
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -154,6 +159,30 @@
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 <button type="submit" name="submit" class="btn btn-primary">Simpan Perubahan</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Global: Delete -->
+    <div class="modal fade modal-danger" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteStatusLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <form id="formDelete" enctype="multipart/form-data">
+                <div class="modal-header">
+                <h5 class="modal-title" id="editStatusLabel">Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="modal_delete_id">
+                    <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Ya, Hapus</button>
                 </div>
             </form>
             </div>
@@ -300,6 +329,50 @@ $(function () {
             },
             error: function(xhr, status, err) {
                 console.error(err);
+                showToast('error', 'Terjadi kesalahan jaringan atau server.');
+            }
+        });
+    });
+
+    // === Ketika tombol delete diklik ===
+    $(document).on('click', '.btn-delete', function(e) {
+        e.preventDefault();
+        
+        const id = $(this).data('id');
+
+        // Isi modal field
+        $('#modal_delete_id').val(id);
+
+        // Buka modal
+        $('#deleteModal').modal('show');
+    });
+
+    // === Saat form delete disubmit ===
+    $('#formDelete').on('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        $.ajax({
+            url: 'config/kurikulum/delete_pro.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(res) {
+                if (res.status === 'success') {
+                    showToast('success', res.message);
+                setTimeout(() => {
+                    $('#deleteModal').modal('hide');
+                    location.reload()
+                }, 1500);
+                } else {
+                showToast('error', res.message);
+                }
+            },
+            error: function(xhr, status, err) {
+                console.log('err -> ', err);
+                // console.error(err);
                 showToast('error', 'Terjadi kesalahan jaringan atau server.');
             }
         });
