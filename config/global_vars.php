@@ -19,7 +19,7 @@ function url_file($value) {
 
 function count_table($name) {
     include "connection.php";
-    return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $name WHERE deleted_at IS NULL"));
+    return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM $name"));
 }
 
 function count_submission() {

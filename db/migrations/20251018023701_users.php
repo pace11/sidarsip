@@ -26,7 +26,6 @@ final class Users extends AbstractMigration
               ->addColumn('type', 'enum', ['values' => ['superadmin', 'admin', 'tk', 'sd', 'smp', 'sma'], 'default' => 'admin'])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
-              ->addColumn('deleted_at', 'timestamp', ['null' => true, 'default' => null])
               ->create();
     }
 }

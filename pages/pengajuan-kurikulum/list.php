@@ -83,7 +83,7 @@
                                         switch ($user_type) {
                                             case 'superadmin':
                                             case 'admin':
-                                                $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE cs.deleted_at IS NULL ORDER BY cs.updated_at DESC";
+                                                $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id ORDER BY cs.updated_at DESC";
                                                 break;
                                             default:
                                                 $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE i.level='$user_type' ORDER BY cs.updated_at DESC";

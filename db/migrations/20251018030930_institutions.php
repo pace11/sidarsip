@@ -24,7 +24,6 @@ final class Institutions extends AbstractMigration
               ->addColumn('level', 'enum', ['values' => ['tk', 'sd', 'smp', 'sma'], 'default' => 'tk'])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
-              ->addColumn('deleted_at', 'timestamp', ['null' => true, 'default' => null])
               ->create();
     }
 }

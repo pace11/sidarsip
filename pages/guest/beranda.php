@@ -96,17 +96,8 @@
                                         <tbody>
                                         <?php 
                                         $no = 1;
-                                    
                                         $user_type = get_user_login('type');
-                                        switch ($user_type) {
-                                            case 'superadmin':
-                                                $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE cs.deleted_at IS NULL ORDER BY cs.updated_at DESC";
-                                                break;
-                                            default:
-                                                $sql = "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE i.level='$user_type' ORDER BY cs.updated_at DESC";
-                                        }
-
-                                        $q = mysqli_query($conn, $sql);
+                                        $q = mysqli_query($conn, "SELECT cs.id, cs.file, i.name AS institution_name, cs.status, cs.remark, cs.created_at FROM curriculum_submissions cs JOIN institutions i ON cs.institution_id=i.id WHERE i.level='$user_type' ORDER BY cs.updated_at DESC");
                                         while($data=mysqli_fetch_array($q)){ ?>
                                             <tr>
                                                 <td><?= $no ?></td>

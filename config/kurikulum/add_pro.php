@@ -58,8 +58,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // delete data not approved terakhir
-    mysqli_query($conn, "UPDATE curriculum_submissions SET deleted_at = '$now' WHERE institution_id='$institusi' AND status='not_approved'");
+    // Hapus data dan file not approved terakhir
+    $old_data_query = mysqli_query($conn, "SELECT file FROM curriculum_submissions WHERE institution_id='$institusi' AND status='not_approved'");
+    
+    // Hapus file fisik terlebih dahulu
+    while ($old_data = mysqli_fetch_array($old_data_query)) {
+        $old_file_path = $upload_dir . $old_data['file'];
+        if (file_exists($old_file_path)) {
+            unlink($old_file_path);
+        }
+    }
+    
+    // Hapus data dari database
+    mysqli_query($conn, "DELETE FROM curriculum_submissions WHERE institution_id='$institusi' AND status='not_approved'");
 
     // Simpan ke database
     $insert = mysqli_query($conn, "INSERT INTO curriculum_submissions SET

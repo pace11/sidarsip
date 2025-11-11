@@ -26,7 +26,6 @@ final class CurriculumSubmissions extends AbstractMigration
               ->addColumn('remark', 'text', ['null' => true])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
-              ->addColumn('deleted_at', 'timestamp', ['default' => null, 'null' => true])
               ->addForeignKey('institution_id', 'institutions', 'id', [
                 'delete'=> 'CASCADE', 
                 'update'=> 'CASCADE'

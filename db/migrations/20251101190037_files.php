@@ -25,7 +25,6 @@ final class Files extends AbstractMigration
               ->addColumn('created_by', 'text', ['null' => true])
               ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
               ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP','null' => false])
-              ->addColumn('deleted_at', 'timestamp', ['null' => true, 'default' => null])
               ->create();
     }
 }

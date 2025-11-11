@@ -69,7 +69,7 @@
                                         <tbody>
                                         <?php 
                                         $no = 1;
-                                        $q = mysqli_query($conn, "SELECT * FROM files WHERE deleted_at IS NULL ORDER BY updated_at DESC");
+                                        $q = mysqli_query($conn, "SELECT * FROM files ORDER BY updated_at DESC");
                                         while($data=mysqli_fetch_array($q)){ ?>
                                             <tr>
                                                 <td><?= $no ?></td>
