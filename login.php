@@ -10,11 +10,11 @@
     $cek_login = mysqli_query($conn, "SELECT * FROM users WHERE BINARY email='$e' AND password='$p'");
     $data = mysqli_fetch_array($cek_login);
     $hitung = mysqli_num_rows($cek_login);
-    $token_gen = encrypt_decrypt('encrypt', $data['id']);
 
-    if ($hitung > 0) {
+    if ($hitung > 0 && $data) {
+      $token_gen = encrypt_decrypt('encrypt', $data['id']);
       setcookie('user_sidarsip', $token_gen, time() + (86400 * 30), "/");
-    } 
+    }
   }
 ?>
 
